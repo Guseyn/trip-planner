@@ -1,2 +1,2 @@
-# trip-planner
-Trip Planner Web App (EHTML + Express.js)
+# Trip Planner Web App (EHTML + Express.js)
+
