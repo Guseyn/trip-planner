@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
+const PORT = process.env.PORT || 8080
 
 app.use(express.static('static'))
 
-app.listen(8080, () => {
-	console.log('app is started: http://localhost:8080')
+app.listen(PORT, () => {
+	console.log(`app is started on port ${PORT}`)
 })
