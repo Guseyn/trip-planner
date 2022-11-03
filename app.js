@@ -5,5 +5,5 @@ const PORT = process.env.PORT || 8080
 app.use(express.static('static'))
 
 app.listen(PORT, () => {
-	console.log(`app is started on port ${PORT}`)
+  console.log(`app is started on port ${PORT}`)
 })
