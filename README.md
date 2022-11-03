@@ -33,7 +33,7 @@ npm install
 npm start
 ```
 
-And then you can open: [http://localhost:4200](http://localhost:4200).
+And then you can open: [http://localhost:8080](http://localhost:8080).
 
 # Open app remotely
 

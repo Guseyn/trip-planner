@@ -3,6 +3,6 @@ const app = express()
 
 app.use(express.static('static'))
 
-app.listen(4200, () => {
-	console.log('app is started: http://localhost:4200')
+app.listen(8080, () => {
+	console.log('app is started: http://localhost:8080')
 })
