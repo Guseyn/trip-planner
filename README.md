@@ -33,8 +33,8 @@ npm install
 npm start
 ```
 
-And then you can open: [http://localhost:8080](http://localhost:8080).
+And then you can open: [http://localhost:8080/html/index.html](http://localhost:8080/html/index.html).
 
 # Open app remotely
 
-This app is also deployed on Heroku: .
+This app is also deployed on Heroku: [https://guseyn-trip-planner.herokuapp.com/html/index.html](https://guseyn-trip-planner.herokuapp.com/html/index.html).
