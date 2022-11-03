@@ -1,6 +1,6 @@
 # Trip Planner Web App (EHTML + Express.js)
 
-Trip planner is simple web app that allows you to build journeys between two stations. It shows you different variations with their prices, so you can choose the best route for yourself. It also allows you to pick first class options.
+Trip planner is a simple web app that allows you to build journeys between two stations. It shows you different variations with their prices, so you can choose the best route for yourself. It also allows you to pick first class options.
 
 # Demo
 
