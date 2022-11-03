@@ -24,4 +24,15 @@ I don't need to mention that the same solution in frameworks like React would ta
 
 When you open an index page, you need to wait for stations to be loaded into memory, so you can select them in the form. Then you just need to select `From (station)`, `To (station)` and pick date and time for the departure.
 
+# How to run app locally
+
+```bash
+git clone git@github.com:Guseyn/trip-planner.git
+cd trip-planner
+npm install
+npm run app
+```
+
+And then you can open: [http://localhost:4200](http://localhost:4200).
+
 
