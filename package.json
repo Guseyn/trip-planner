@@ -1,0 +1,23 @@
+{
+  "name": "trip-planner",
+  "version": "1.0.0",
+  "description": "Trip Planner Web App (EHTML + Express.js)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guseyn/trip-planner.git"
+  },
+  "author": "guseyn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Guseyn/trip-planner/issues"
+  },
+  "homepage": "https://github.com/Guseyn/trip-planner#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

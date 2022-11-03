@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>Trip planner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Guseyn">
+    <link rel="shortcut icon" type="image/png" href="/../image/favicon.png">
+    <link rel="stylesheet" href="/../css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="/../css/main.css" type="text/css">
+    <script src="/../js/lib.js" type="text/javascript"></script>
+    <script src="/../js/ehtml.bundle.min.js" type="text/javascript"></script>
+  </head>
+
+  <body class="main">
+    <div class="base">
+      <div id="loading" style="text-align: center; font-weight: bold;">
+        Please, wait. We are loading stations...
+      </div>
+      <e-json
+        data-src="https://v5.db.transport.rest/stations"
+        data-response-name="responseWithStations"
+        data-actions-on-response="
+          hideElms('#loading');
+          saveStationsInMemory('${responseWithStations.body}');
+          mapToTemplate('${window.stations}', '#form-with-stations');
+        ">
+        <template id="form-with-stations" data-object-name="stations">
+          <e-form
+            class="form"
+            id="form"
+            data-validation-error-message="Enter correct data into the form, please"
+            data-validation-error-class-for-message-box="form-message-error">
+            <div id="form-content">
+              <div class="name">
+                <b>Get all journeys</b>
+              </div>
+              <div class="form-label">From (station):</div>
+              <select
+                type="select"
+                name="from"
+                class="form-input"
+                data-is-query-param="true"
+                required
+                data-validation-absence-error-message="From (station) is required"
+                data-validation-error-class-for-element="elm-error"
+                data-validation-error-class-for-message-box="message-error">
+                  <template is="e-for-each" data-list-to-iterate="${window.stations}" data-item-name="station">
+                    <option data-value="${station.id}" data-text="${station.name}"></option>
+                  </template>
+                </select>
+              <div class="form-label">To (station):</div>
+              <select
+                name="to"
+                class="form-input"
+                data-is-query-param="true"
+                required
+                data-validation-absence-error-message="To (station) is required"
+                data-validation-error-class-for-element="elm-error"
+                data-validation-error-class-for-message-box="message-error">
+                  <template is="e-for-each" data-list-to-iterate="${window.stations}" data-item-name="station">
+                    <option data-value="${station.id}" data-text="${station.name}"></option>
+                  </template>
+                </select>
+              <div class="form-label">Date/time:</div>
+              <input
+                type="datetime-local"
+                name="departure"
+                class="form-input"
+                data-is-query-param="true"
+                required
+                data-validation-absence-error-message="Date/time is required"
+                data-validation-error-class-for-element="elm-error"
+                data-validation-error-class-for-message-box="message-error">  
+              <div class="form-label">Choose additional options:</div>
+              <div>
+                <span class="lang-option">First class</span>
+                <input
+                  type="checkbox"
+                  name="firstClass"
+                  value="true"
+                  unchecked-value="false"
+                  data-is-query-param="true">
+              </div>
+              <div>
+                <span class="lang-option">Include Bus</span>
+                <input
+                  type="checkbox"
+                  name="bus"
+                  value="true"
+                  unchecked-value="false"
+                  data-is-query-param="true">
+              </div>
+
+              <button
+                data-request-url="https://v5.db.transport.rest/journeys"
+                data-request-method="GET"
+                data-request-headers="{}"
+                data-upload-progress-bar="#upload-progress-bar"
+                data-progress-bar="#progress-bar"
+                data-ajax-icon="#ajax-icon"
+                data-response-name="response"
+                onclick="this.form.submit(this)"
+                data-actions-on-response="
+                  showElms('.response-box');
+                  mapToTemplate('${response.body}', '#response-template');
+                ">
+                Get
+              </button>
+              <img id="ajax-icon" class="ajax-icon" src="/../images/ajax-icon.svg"/>
+            </div>
+          </e-form>
+          <div class="response-box" style="display: none;">
+          </div>
+          <template is="e-reusable" id="response-template" data-object-name="responseBody" data-insert-into=".response-box">
+            <div class="response-info">
+              <div><b data-text="Found ${responseBody.journeys.filter(journey => journey.price !== null).length} journeys:"></b></div>
+              <template is="e-for-each" data-list-to-iterate="${responseBody.journeys.filter(journey => journey.price !== null)}" data-item-name="journey">
+                <div class="journey-box">
+                  <div class="price-box">
+                    <img src="/../images/euro.png" class="euro-sign"><span class="near-image" data-text="${journey.price.amount} ${journey.price.currency}"></span>
+                  </div>
+                  <template is="e-for-each" data-list-to-iterate="${journey.legs}" data-item-name="leg">
+                    <div class="leg-box">
+                      <img src="/../images/station.png" class="station-sign"><span class="small near-image" data-text="${leg.origin.name}, departure: ${new Date(leg.departure).toLocaleDateString()}, ${new Date(leg.departure).toLocaleTimeString()}; arrival: ${new Date(leg.arrival).toLocaleDateString()}, ${new Date(leg.arrival).toLocaleTimeString()}"></span>
+                    </div>
+                    <template is="e-if" data-condition-to-display="${leg.index === journey.legs.length}">
+                      <div class="leg-box">
+                        <img src="/../images/station.png" class="station-sign"><span class="small near-image" data-text="${leg.destination.name}"></span>
+                      </div>
+                    </template>
+                  </template>
+                  <template is="e-if" data-condition-to-display="${journey.index !== responseBody.journeys.filter(journey => journey.price !== null).length}">
+                    <hr>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </template>
+        </template>
+      </e-json>
+    </div>
+  </body>
+</html>
