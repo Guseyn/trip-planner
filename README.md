@@ -30,9 +30,11 @@ When you open an index page, you need to wait for stations to be loaded into mem
 git clone git@github.com:Guseyn/trip-planner.git
 cd trip-planner
 npm install
-npm run app
+npm start
 ```
 
 And then you can open: [http://localhost:4200](http://localhost:4200).
 
+# Open app remotely
 
+This app is also deployed on Heroku: .
