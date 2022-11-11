@@ -18,7 +18,7 @@ Nowdays many developers would use React.js framework/library to build a frontend
 
 Frontend for this app consists of just **one** html page: `static/html/index.html`, where we include script with **EHTML**. Also, we are using one simple function to save stations to memory. And that's it. All the logic, validation for the form and mapping we are doing right in the html.
 
-I don't need to mention that the same solution in frameworks like React would take lot more `js/jsx` files. And I don't need to mention that that solution would look messy and more complex.
+I don't need to mention that the same solution in frameworks like React would take lot more `js/jsx` files and in general it would look messy and more complex.
 
 # How it works
 
