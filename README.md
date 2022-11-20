@@ -16,7 +16,7 @@ This app is built with Express.js and [EHTML](https://github.com/Guseyn/EHTML). 
 
 Nowdays many developers would use React.js framework/library to build a frontend for such app. I decided to use my [own solution]((https://github.com/Guseyn/EHTML)). Why? Simply because I like simplicity. This is really simple application, and we are not doing nothing fancy here. We just are fetching data from some REST endpoints and mapping responses to some html.
 
-Frontend for this app consists of just **one** html page: `static/html/index.html`, where we include script with **EHTML**. Also, we are using one simple function to save stations to memory. And that's it. All the logic, validation for the form and mapping we are doing right in the html.
+Frontend for this app consists of just **one** html page: `static/html/index.html`, where we include script with **EHTML**. Also, we are using one simple function to save stations into memory. And that's it. All the logic, validation for the form and mapping we are doing right in the html.
 
 I don't need to mention that the same solution in frameworks like React would take lot more `js/jsx` files and in general it would look messy and more complex.
 
